@@ -1,0 +1,36 @@
+@model IEnumerable<SCE.Models.Project>
+
+@{
+    ViewData["Title"] = "评分";
+}
+
+<h2>测评@(ViewBag.UserName)</h2>
+
+<form asp-action="MarkType">
+    <div class="form-horizontal">
+        <h4>教师测评</h4>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" value="@ViewBag.TargetUserId" name="TargetUserId" />
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">分数值</label>
+            <div class="col-md-10">
+                <input name="MarkValue" type="number" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="保存测评结果" class="btn btn-info" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Mark">返回用户列表</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

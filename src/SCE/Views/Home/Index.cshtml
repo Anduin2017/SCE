@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "主页";
+}
+
+<div class="jumbotron">
+    <h3>欢迎使用软件学院管理人员测评系统</h3>
+    <p>登录系统以开始进行管理人员测评...</p>
+    <div class="btn-group" role="group">
+        <a class="btn btn-success btn-lg" asp-controller="ProjectRecords" asp-action="Mark" role="button">
+            <i class="fa fa-pencil"></i> 
+            开始测评
+        </a>
+            <button type="button" class="btn btn-warning btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-gears"></i>
+                管理中心 <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a asp-area="" asp-controller="ApplicationUsers" asp-action="Index">用户管理</a></li>
+                <li><a asp-area="" asp-controller="UserTypes" asp-action="Index">权限管理</a></li>
+                <li><a asp-area="" asp-controller="Parts" asp-action="Index">部门管理</a></li>
+                <li><a asp-area="" asp-controller="Projects" asp-action="Index">测评表管理</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a asp-area="" asp-controller="ProjectRecords" asp-action="MarkResult">结果统计</a></li>
+            </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>使用说明</h2>
+        <p>
+            请教师先登录平台，账号为你的工资号。登录平台后，在“评分”页面可以查询到自己的权限、角色等信息。单击教师可以查看教师的年度工作总结和评分选项。
+        </p>
+        <p>
+            登录平台后，单击用户名即可进入账户管理中心，可以修改你的默认密码。
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>管理说明</h2>
+        <p>
+            管理员登录平台后，你可以管理平台的已注册用户、部门信息、考题信息、用户权限组等。在“评分结果”页你可以查询到各个教师的最终得分。
+        </p>
+        <p>
+            平台支持在移动设备上访问。
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>运行说明</h2>
+        <p>
+            项目由东北大学软件学院主持开发, 基于Dot Net Core技术。运营详情请参考<a href="https://docs.microsoft.com/en-us/dotnet/#pivot=docs&panel=getstarted">官方文档</a>。
+        </p>
+    </div>
+</div>

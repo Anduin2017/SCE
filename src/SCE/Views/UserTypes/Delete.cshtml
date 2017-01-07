@@ -1,0 +1,36 @@
+@model SCE.Models.UserType
+
+@{
+    ViewData["Title"] = "删除用户类型";
+}
+
+<h2>删除用户类型</h2>
+
+<h3>你确定要删除这个用户类型?</h3>
+<div class="alert ng-isolate-scope alert-danger alert-dismissable" role="alert" type="success">
+    <button type="button" class="close">
+        <span aria-hidden="true">×</span>
+        <span class="sr-only">Close</span>
+    </button>
+    <div><span class="ng-binding ng-scope">警告：一旦删除该用户类型，将会同时删除所有具有该类型的用户!</span></div>
+</div>
+
+<div>
+    <h4>用户类型</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            类型名称
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserTypeName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="确定" class="btn btn-danger" /> |
+            <a asp-action="Index">返回列表</a>
+        </div>
+    </form>
+</div>

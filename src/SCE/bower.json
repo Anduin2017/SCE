@@ -1,0 +1,23 @@
+{
+  "name": "sce",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Anduin"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "angular": "angularjs#^1.6.0",
+    "font-awesome": "^4.7.0",
+    "jquery-validation": ">=1.8",
+    "bootstrap": "3.3.6",
+    "jquery-validation-unobtrusive": "3.2.6",
+    "rangy": "^1.3.0",
+    "textAngular": "^1.5.16",
+    "datatables": "1.10.11"
+  },
+  "resolutions": {
+    "jquery": ">=1.7.0"
+  }
+}

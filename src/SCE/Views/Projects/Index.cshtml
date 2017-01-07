@@ -1,0 +1,88 @@
+@model IEnumerable<SCE.Models.Project>
+
+@{
+    ViewData["Title"] = "测评项目管理";
+}
+
+<h2>测评项目管理</h2>
+<hr />
+
+<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+    <div class="widgetbox widgetbox-default widgetbox-item-icon">
+        <div class="widgetbox-item-left widgetbox-icon-success">
+            <span class="fa fa-check-square"></span>
+        </div>
+        <div class="widgetbox-data">
+            <div class="widgetbox-int">
+                @Model.Count()
+            </div>
+            <div class="widgetbox-title">
+                总测评项目数
+            </div>
+            <div class="widgetbox-subtitle">
+                所有测评项目总数和
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+    <div class="widgetbox widgetbox-default widgetbox-item-icon">
+        <div class="widgetbox-item-left widgetbox-icon-danger">
+            <span class="fa fa-tags"></span>
+        </div>
+        <div class="widgetbox-data">
+            <div class="widgetbox-int">
+                @Model.Sum(t=>t.ProjectArg)
+            </div>
+            <div class="widgetbox-title">
+                测评项目权重和
+            </div>
+            <div class="widgetbox-subtitle">
+                所有测评项目的权重和. 如果该值为1, 那么考评得分将会分布在4~10之间
+            </div>
+        </div>
+    </div>
+</div>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">创建新项</a>
+</p>
+
+<hr />
+<table class="table table-hover table-striped"  id="table">
+    <thead>
+        <tr>
+            <th>
+                测评项目
+            </th>
+            <th>
+                测评系数
+            </th>
+            <th>
+                备注
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectArg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProjectId">编辑</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ProjectId">删除</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

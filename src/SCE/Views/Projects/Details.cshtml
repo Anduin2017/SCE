@@ -1,0 +1,36 @@
+@model SCE.Models.Project
+
+@{
+    ViewData["Title"] = "考核项详细信息";
+}
+
+<h2>考核项详细信息</h2>
+
+<div>
+    <h4>考核项</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectArg)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProjectArg)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProjectName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ProjectId">编辑</a> |
+    <a asp-action="Index">返回列表</a>
+</div>

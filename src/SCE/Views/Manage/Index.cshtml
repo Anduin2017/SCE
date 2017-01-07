@@ -1,0 +1,18 @@
+﻿@model IndexViewModel
+@{
+    ViewData["Title"] = "账户管理中心";
+}
+
+<h2>@ViewData["Title"].</h2>
+<p class="text-success">@ViewData["StatusMessage"]</p>
+
+<div>
+    <h4>修改账户设置</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>密码:</dt>
+        <dd>
+            <a asp-controller="Manage" asp-action="ChangePassword" class="btn btn-info">修改密码</a>
+        </dd>
+    </dl>
+</div>

@@ -1,0 +1,135 @@
+@model IEnumerable<SCE.Models.Project>
+
+@{
+    ViewData["Title"] = "测评表";
+}
+
+<h2>测评: @(ViewBag.UserName)</h2>
+
+<a class="btn btn-info" asp-action="ViewDes" asp-controller="ProjectRecords" asp-route-id="@ViewBag.TargetUserId">查看@(ViewBag.UserName)的年终总结</a>
+<hr />
+@*<blockquote>
+        @Html.Raw(ViewBag.Content as string)
+    </blockquote>*@
+
+<form asp-action="MarkNow" id="marktable" ng-controller="tableController">
+    <div class="form-horizontal">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" value="@ViewBag.TargetUserId" name="TargetUserId" />
+        <table class="table table-hover table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        序号
+                    </th>
+                    <th width="55%">
+                        测评项目
+                    </th>
+                    <th>
+                        测评系数
+                    </th>
+                    <th>
+                        测评打分
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var quest in Model)
+                {
+                    <tr>
+                        <td>
+                            @quest.ProjectId
+                        </td>
+                        <td width="55%">
+                            @Html.DisplayFor(modelItem => quest.ProjectName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => quest.ProjectArg)
+                        </td>
+                        <td>
+                            <label class="ui-radio">
+                                <input type="radio" name="@quest.ProjectId" value="10" checked="checked">
+                                <span>10分</span>
+                            </label>
+                            <label class="ui-radio">
+                                <input type="radio" name="@quest.ProjectId" value="8">
+                                <span>8分</span>
+                            </label>
+                            <label class="ui-radio">
+                                <input type="radio" name="@quest.ProjectId" value="6">
+                                <span>6分</span>
+                            </label>
+                            <label class="ui-radio">
+                                <input type="radio" name="@quest.ProjectId" value="4">
+                                <span>4分</span>
+                            </label>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="alert ng-isolate-scope alert-danger alert-dismissable" role="alert" type="success">
+            <button type="button" class="close">
+                <span aria-hidden="true">×</span>
+                <span class="sr-only">Close</span>
+            </button>
+            <div><span class="ng-binding ng-scope">警告：不允许进行第二次测评！</span></div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <a ng-click="submit()" class="btn btn-info">保存测评结果</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a class="btn btn-warning" asp-action="Mark">返回用户列表</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        angular.module('SCE', []).controller('tableController', function ($scope) {
+            $scope.mark = {};
+            $scope.avaliable = function () {
+                $scope.mark = {
+                    sum: 0,
+                    A: 0,
+                    B: 0,
+                    C: 0,
+                    D: 0
+                };
+                $('input[type="radio"]').each(function (data) {
+                    if (this.checked) {
+                        if (Number(this.value) === 10) {
+                            $scope.mark.A++;
+                        } else if (Number(this.value) === 8) {
+                            $scope.mark.B++;
+                        } else if (Number(this.value) === 6) {
+                            $scope.mark.C++;
+                        } else if (Number(this.value) === 4) {
+                            $scope.mark.D++;
+                        }
+                        $scope.sum += Number(this.value);
+                    }
+                });
+                if ($scope.mark.B == 0 && $scope.mark.C == 0 && $scope.mark.D == 0) {
+                    return false
+                } else if ($scope.mark.B == 0 && $scope.mark.C == 0 && $scope.mark.A == 0) {
+                    return false;
+                }
+                return true;
+            }
+            $scope.submit = function () {
+                if ($scope.avaliable()) {
+                    $('#marktable').submit();
+                }
+                else {
+                    alert('不允许全部打满分或最低分!');
+                }
+            }
+        });
+    </script>
+}

@@ -1,0 +1,157 @@
+@model SCE.Models.UserTypesViewModel.IndexViewModel
+
+@{
+    ViewData["Title"] = "用户权限";
+}
+
+<h2>用户权限</h2>
+<hr />
+<div class="col-lg-3 col-sm-6 col-md-6 col-xs-12">
+    <div class="widgetbox widgetbox-default widgetbox-item-icon">
+        <div class="widgetbox-item-left widgetbox-icon-info">
+            <span class="fa fa-check"></span>
+        </div>
+        <div class="widgetbox-data">
+            <div class="widgetbox-int">
+                @Model.Users.Where(t => t.UserType.AvaliableToMark).Count()人
+            </div>
+            <div class="widgetbox-title">
+                允许被测评
+            </div>
+            <div class="widgetbox-subtitle">
+                开启此项后，其它用户将会在“评分”页面看到该用户组的用户，并可以进行评分。
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-sm-6 col-md-6 col-xs-12">
+    <div class="widgetbox widgetbox-default widgetbox-item-icon">
+        <div class="widgetbox-item-left widgetbox-icon-danger">
+            <span class="fa fa-shield"></span>
+        </div>
+        <div class="widgetbox-data">
+            <div class="widgetbox-int">
+                @Model.Users.Where(t => t.UserType.IsAdmin).Count()人
+            </div>
+            <div class="widgetbox-title">
+                管理员权限
+            </div>
+            <div class="widgetbox-subtitle">
+                具备此权限的用户可以访问用户管理、权限管理、部门管理、考题管理等模块
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-sm-6 col-md-6 col-xs-12">
+    <div class="widgetbox widgetbox-default widgetbox-item-icon">
+        <div class="widgetbox-item-left widgetbox-icon-success">
+            <span class="fa fa-book"></span>
+        </div>
+        <div class="widgetbox-data">
+            <div class="widgetbox-int">
+                @Model.Users.Where(t => t.UserType.GivePointDirectly).Count()人
+            </div>
+            <div class="widgetbox-title">
+                允许键入分数
+            </div>
+            <div class="widgetbox-subtitle">
+                具备此权限的用户在评分时可以选择放弃回答题目，而是直接键入数值来评分。
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-sm-6 col-md-6 col-xs-12">
+    <div class="widgetbox widgetbox-default widgetbox-item-icon">
+        <div class="widgetbox-item-left widgetbox-icon-purple">
+            <span class="fa fa-pencil"></span>
+        </div>
+        <div class="widgetbox-data">
+            <div class="widgetbox-int">
+                @Model.Users.Where(t => t.UserType.InCount).Count()人
+            </div>
+            <div class="widgetbox-title">
+                计入人数统计
+            </div>
+            <div class="widgetbox-subtitle">
+                具备此项的用户将计入统计, 统计包含应打分人数统计, 已打分人数统计等.
+            </div>
+        </div>
+    </div>
+</div>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">创建新的</a>
+</p>
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>
+                用户权限名称
+            </th>
+            <th>
+                测评权重
+            </th>
+            <th>
+                人数
+            </th>
+            <th>
+                允许被测评
+            </th>
+            <th>
+                管理员权限
+            </th>
+            <th>
+                允许键入分数
+            </th>
+            <th>
+                计入人数统计
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.UserTypes)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserTypeName)
+                </td>
+                <td>
+                    <span class="label label-success">
+                        @Html.DisplayFor(modelItem => item.Arg)
+                    </span>
+                </td>
+                <td>
+                    @(item.Users?.Count() ?? 0) 人
+                </td>
+                <td>
+                    <label class="switch switch-warning">
+                        <input type="checkbox" disabled="disabled" checked="@item.AvaliableToMark">
+                        <i></i>
+                    </label>
+                </td>
+                <td>
+                    <label class="switch switch-danger">
+                        <input type="checkbox" disabled="disabled" checked="@item.IsAdmin">
+                        <i></i>
+                    </label>
+                </td>
+                <td>
+                    <label class="switch switch-success">
+                        <input type="checkbox" disabled="disabled" checked="@item.GivePointDirectly">
+                        <i></i>
+                    </label>
+                </td>
+                <td>
+                    <label class="switch switch-info">
+                        <input type="checkbox" disabled="disabled" checked="@item.InCount">
+                        <i></i>
+                    </label>
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.UserTypeId">编辑</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,80 @@
+@model SCE.Models.UserType
+@{ ViewData["Title"] = "创建用户类型"; }
+
+<h2>创建用户类型</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>用户类型</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">用户类型名称</label>
+            <div class="col-md-10">
+                <input asp-for="UserTypeName" class="form-control" />
+                <span asp-validation-for="UserTypeName" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">打分时所占权重</label>
+            <div class="col-md-10">
+                <input asp-for="Arg" class="form-control" />
+                <span asp-validation-for="Arg" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <label class="switch switch-warning">
+                    <input class="ng-untouched ng-valid ng-dirty ng-valid-parse" asp-for="AvaliableToMark" type="checkbox" checked="checked">
+                    <i></i>
+                </label>
+                允许该用户组被打分
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <label class="switch switch-danger">
+                    <input class="ng-untouched ng-valid ng-dirty ng-valid-parse" asp-for="IsAdmin" type="checkbox">
+                    <i></i>
+                </label>
+                允许该用户组访问管理权限
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <label class="switch switch-success">
+                    <input class="ng-untouched ng-valid ng-dirty ng-valid-parse" asp-for="GivePointDirectly" type="checkbox">
+                    <i></i>
+                </label>
+                允许该用户直接输入分数而不是通过做题评分
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <label class="switch switch-info">
+                    <input class="ng-untouched ng-valid ng-dirty ng-valid-parse" asp-for="InCount" type="checkbox" checked="checked">
+                    <i></i>
+                </label>
+                计入人数统计
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="创建" class="btn btn-info" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">返回列表</a>
+</div>
+
+@section Scripts { @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} }

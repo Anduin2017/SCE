@@ -1,0 +1,132 @@
+@model SCE.Models.ApplicationUsersViewModels.IndexViewModel
+
+@{
+    ViewData["Title"] = "用户管理";
+}
+
+<h2>用户管理</h2>
+<hr />
+
+<div class="col-lg-3 col-sm-6 col-md-6 col-xs-12">
+    <div class="widgetbox widgetbox-default widgetbox-item-icon">
+        <div class="widgetbox-item-left widgetbox-icon-success">
+            <span class="fa fa-users"></span>
+        </div>
+        <div class="widgetbox-data">
+            <div class="widgetbox-int">
+                @Model.Users.Count()
+            </div>
+            <div class="widgetbox-title">
+                总注册用户数量
+            </div>
+            <div class="widgetbox-subtitle">
+                所有参与测评的用户总量
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-sm-6 col-md-6 col-xs-12">
+    <div class="widgetbox widgetbox-default widgetbox-item-icon">
+        <div class="widgetbox-item-left widgetbox-icon-info">
+            <span class="fa fa-gears"></span>
+        </div>
+        <div class="widgetbox-data">
+            <div class="widgetbox-int">
+                @Model.Users.Where(t => t.UserType.IsAdmin == true).Count()
+            </div>
+            <div class="widgetbox-title">
+                管理员
+            </div>
+            <div class="widgetbox-subtitle">
+                具有管理员权限的用户数量总和
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-sm-6 col-md-6 col-xs-12">
+    <div class="widgetbox widgetbox-default widgetbox-item-icon">
+        <div class="widgetbox-item-left widgetbox-icon-danger">
+            <span class="fa fa-sort-amount-asc"></span>
+        </div>
+        <div class="widgetbox-data">
+            <div class="widgetbox-int">
+                @Model.UserTypes.Count()
+            </div>
+            <div class="widgetbox-title">
+                权限等级数量
+            </div>
+            <div class="widgetbox-subtitle">
+                所有不同权限用户组数量和
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-sm-6 col-md-6 col-xs-12">
+    <div class="widgetbox widgetbox-default widgetbox-item-icon">
+        <div class="widgetbox-item-left widgetbox-icon-warning">
+            <span class="fa fa-university"></span>
+        </div>
+        <div class="widgetbox-data">
+            <div class="widgetbox-int">
+                @Model.UserParts.Count()
+            </div>
+            <div class="widgetbox-title">
+                部门数量
+            </div>
+            <div class="widgetbox-subtitle">
+                当前所有用户组成的部门数量和
+            </div>
+        </div>
+    </div>
+</div>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">注册新用户</a>
+</p>
+<hr />
+<table class="table table-hover table-striped" id="table">
+    <thead>
+        <tr>
+            <th>
+                用户姓名
+            </th>
+            <th>
+                用户工资号
+            </th>
+            <th>
+                用户权限等级
+            </th>
+            <th>
+                用户部门
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Users)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <span class="label label-primary">
+                        @Html.DisplayFor(modelItem => item.StaffNo)
+                    </span>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserType.UserTypeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Part.PartName)
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <a class="btn btn-sm btn-info" asp-action="Edit" asp-route-id="@item.Id">编辑</a>
+                        <a class="btn btn-sm btn-danger" asp-action="AdminResetPassword" asp-controller="Manage" asp-route-id="@item.Id">重置密码</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

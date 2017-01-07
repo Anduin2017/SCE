@@ -1,0 +1,81 @@
+@model SCE.Models.ProjectRecordsViewModels.DoListViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+<h2>@Model.Target.Name 的测评情况</h2>
+<div class="alert ng-isolate-scope alert-warning alert-dismissable" role="alert" type="success">
+    <button type="button" class="close">
+        <span aria-hidden="true">×</span>
+        <span class="sr-only">Close</span>
+    </button>
+    <div><span class="ng-binding ng-scope">注意：有效分数是评分人权重和所给分数的乘积, 能反应对结果影响的大小. 而最终结果的计算方法为先求各个组内的平均分, 再对各个组内平均分加权求和. 直接相加表中的有效分数没有任何意义.</span></div>
+</div>
+
+<h3>已完成测评</h3>
+<table class="table table-hover table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                用户名
+            </th>
+            <th>
+                评分
+            </th>
+            <th>
+                评分人权重
+            </th>
+            <th>
+                有效分数
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var done in Model.Done)
+        {
+            <tr>
+                <td>
+                    @done.User.Name
+                </td>
+                <td>
+                    @Math.Round(done.MarkGave,2) 
+                </td>
+                <td>
+                    @done.User.UserType.Arg
+                </td>
+                <td>
+                    @(done.MarkGave*done.User.UserType.Arg)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>未完成测评</h3>
+<table class="table table-hover table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                用户名
+            </th>
+            <th>
+                所属部门
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Pending in Model.Pending)
+        {
+            <tr>
+                <td>
+                    @Pending.Name
+                </td>
+                <td>
+                    @Pending.Part.PartName
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-controller="ProjectRecords" asp-action="MarkResult">返回列表</a>

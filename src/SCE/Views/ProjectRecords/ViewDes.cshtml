@@ -1,0 +1,16 @@
+@model SCE.Models.ApplicationUser
+@using SCE.Data
+@{
+    ViewData["Title"] = "年度总结";
+}
+<h2>查看@(Model.Name)的年终总结</h2>
+<div class="row">
+    <a class="btn btn-primary" asp-action="Mark" asp-controller="ProjectRecords">返回列表</a>
+    <h3>@(Model.Name)的年终总结报告</h3>
+    <hr />
+    <div>
+        @Html.Raw(Model.Description)
+    </div>
+
+    <a class="btn btn-primary" asp-action="Mark" asp-controller="ProjectRecords">返回列表</a>
+</div>

@@ -1,0 +1,43 @@
+@model IEnumerable<SCE.Models.Part>
+
+@{
+    ViewData["Title"] = "部门管理";
+}
+
+<h2>部门管理</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">创建新部门</a>
+</p>
+
+<hr />
+<table class="table table-hover table-striped"  id="table">
+    <thead>
+        <tr>
+            <th>
+                部门名称
+            </th>
+            <th>
+                部门人数
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PartName)
+            </td>
+            <td>
+                @item.Users.Count()
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PartId">编辑</a> |
+                <a asp-action="Details" asp-route-id="@item.PartId">详细信息</a> |
+                <a asp-action="Delete" asp-route-id="@item.PartId">删除</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,30 @@
+@model SCE.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "用户详细信息";
+}
+
+<h2>详细信息</h2>
+
+<div>
+    <h4>用户</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            工资号
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StaffNo)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">编辑</a> |
+    <a asp-action="Index">返回列表</a>
+</div>

@@ -1,0 +1,73 @@
+@model SCE.Models.ProjectRecordsViewModels.MarkDetailsViewModel
+
+@{
+    ViewData["Title"] = "得分细则";
+}
+<h3>@(Model.Target.Name)的得分细则</h3>
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">得分是如何计算的</h3>
+    </div>
+    <div class="panel-body"> 一个用户的最终得分在计算时，会依次先按用户权限求出各组用户对他打分的均值，然后对这些值加权求和。 </div>
+</div>
+<hr />
+@{
+    string tempstring = string.Empty;
+}
+@foreach (var Type in Model.TypeMark)
+{
+    <div class="col-lg-3 col-sm-6 col-md-6 col-xs-12">
+        <div class="widgetbox widgetbox-default widgetbox-item-icon" style="height:160px">
+            <div class="widgetbox-item-left widgetbox-icon-info">
+                <span class="fa fa-pencil"></span>
+            </div>
+            <div class="widgetbox-data">
+                <div class="widgetbox-int">
+                    @{
+                        tempstring += Math.Round(Type.Type.Arg * Type.MarkValue, 2).ToString() + " + ";
+                    }
+                    @Math.Round(Type.Type.Arg * Type.MarkValue, 2)
+                </div>
+                <div class="widgetbox-title">
+                    @(Type.Type.UserTypeName)给分
+                </div>
+                <div class="widgetbox-subtitle">
+                    @(Type.Type.Arg * Type.MarkValue) = @Type.MarkValue * @(Type.Type.Arg). 其中@(Type.MarkValue)是该组成员给分的算术平均分，@(Type.Type.Arg)是该组权重.
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<h2>
+    <code>最终得分 @Math.Round(Model.Result.Sum, 2) = @tempstring.Trim('+',' ')</code>
+</h2>
+<h3>分题得分情况</h3>
+<p></p>
+
+<hr />
+<table class="table table-hover"  id="table">
+    <thead>
+        <tr>
+            <th>
+                题目名称
+            </th>
+            <th>
+                该题目平均分
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ProjectMark)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Project.ProjectName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MarkValue)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="btn btn-primary" asp-controller="ProjectRecords" asp-action="MarkResult">返回列表</a>
