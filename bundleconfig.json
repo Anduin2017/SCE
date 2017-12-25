@@ -13,11 +13,11 @@
     "inputFiles": [
       "wwwroot/lib/jquery/dist/jquery.js",
       "wwwroot/lib/bootstrap/dist/js/bootstrap.js",
-      "wwwroot/lib/datatables/media/js/jquery.dataTables.min.js",
-      "wwwroot/lib/angular/angular.min.js",
+      "wwwroot/lib/datatables/media/js/jquery.dataTables.js",
+      "wwwroot/lib/angular/angular.js",
       "wwwroot/lib/textAngular/dist/textAngular-rangy.min.js",
-      "wwwroot/lib/textAngular/dist/textAngular-sanitize.min.js",
-      "wwwroot/lib/textAngular/dist/textAngular.min.js",
+      "wwwroot/lib/textAngular/dist/textAngular-sanitize.js",
+      "wwwroot/lib/textAngular/dist/textAngular.js",
       "wwwroot/js/site.js"
     ],
     "minify": {

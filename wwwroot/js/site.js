@@ -1,10 +1,10 @@
 ﻿angular.module('SCE', ['textAngular']);
 $(document).ready(function () {
     var table = $('#table');
-    if(table!=null){
+    if (table != null) {
         table.dataTable({
             bLengthChange: true,
-            searching:true,
+            searching: true,
             oLanguage: {
                 "sLengthMenu": "每页显示 _MENU_ 条记录",
                 "sZeroRecords": "抱歉， 没有找到",
@@ -17,7 +17,7 @@ $(document).ready(function () {
                     "sNext": "后一页",
                     "sLast": "尾页"
                 },
-                "sSearch":"搜索:"
+                "sSearch": "搜索:"
             }
         });
     }
