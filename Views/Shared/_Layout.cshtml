@@ -5,17 +5,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - 测评系统</title>
-    <link rel='stylesheet' href='~/lib/font-awesome/css/font-awesome.min.css'>
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel='stylesheet' href='~/lib/font-awesome/css/font-awesome.min.css'>
+        <link rel='stylesheet' href='~/lib/textAngular/dist/textAngular.css'>
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment names="Staging,Production">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css" asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
-    <link rel='stylesheet' href='/lib/textAngular/dist/textAngular.css'>
 </head>
 
 <body>
@@ -59,51 +57,16 @@
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/lib/datatables/media/js/jquery.dataTables.min.js"></script>
+        <script src='~/lib/angular/angular.min.js'></script>
+        <script src='~/lib/textAngular/dist/textAngular-rangy.min.js'></script>
+        <script src='~/lib/textAngular/dist/textAngular-sanitize.min.js'></script>
+        <script src='~/lib/textAngular/dist/textAngular.min.js'></script>
+        <script src="~/js/site.js"></script>
     </environment>
     <environment names="Staging,Production">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js" asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js" asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
-        </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-    <script src="~/lib/datatables/media/js/jquery.dataTables.min.js"></script>
-
-    <script src='~/lib/angular/angular.min.js'></script>
-    <script src='~/lib/textAngular/dist/textAngular-rangy.min.js'></script>
-    <script src='~/lib/textAngular/dist/textAngular-sanitize.min.js'></script>
-    <script src='~/lib/textAngular/dist/textAngular.min.js'></script>
-    <script>
-        angular.module('SCE', ['textAngular']);
-    </script>
-    <script>
-        $(document).ready(function () {
-            var table = $('#table');
-            if(table!=null){
-                table.dataTable({
-                    bLengthChange: true,
-                    searching:true,
-                    oLanguage: {
-                        "sLengthMenu": "每页显示 _MENU_ 条记录",
-                        "sZeroRecords": "抱歉， 没有找到",
-                        "sInfo": "当页显示从 _START_ 项到 _END_ 项 - 共 _TOTAL_ 项数据",
-                        "sInfoEmpty": "没有数据",
-                        "sInfoFiltered": "(从 _MAX_ 条数据中检索)",
-                        "oPaginate": {
-                            "sFirst": "首页",
-                            "sPrevious": "前一页",
-                            "sNext": "后一页",
-                            "sLast": "尾页"
-                        },
-                        "sSearch":"搜索:"
-                    }
-                });
-            }
-        });
-    </script>
     @RenderSection("scripts", required: false)
 </body>
 
