@@ -11,13 +11,10 @@
         <span class="sr-only">@Model.Progress% 已完成</span>
     </div>
 </div>
-<div class="alert ng-isolate-scope alert-warning alert-dismissable" role="alert" type="success">
-    <button type="button" class="close">
-        <span aria-hidden="true">×</span>
-        <span class="sr-only">Close</span>
-    </button>
-    <div><span class="ng-binding ng-scope">你有@(Model.Left)位老师尚未测评, 测评进度@(Model.Progress)%</span></div>
-</div>
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <span class="ng-binding ng-scope">你有@(Model.Left)位老师尚未测评, 测评进度@(Model.Progress)%</span>
+        </div>
 <div class="panel panel-success">
     <div class="panel-heading">
         <h3 class="panel-title">用户状态</h3>

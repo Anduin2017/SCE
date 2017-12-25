@@ -5,15 +5,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - 测评系统</title>
-    <environment names="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel='stylesheet' href='~/lib/font-awesome/css/font-awesome.min.css'>
-        <link rel='stylesheet' href='~/lib/textAngular/dist/textAngular.css'>
-        <link rel="stylesheet" href="~/css/site.css" />
-    </environment>
-    <environment names="Staging,Production">
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel='stylesheet' href='~/lib/font-awesome/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='~/lib/textAngular/dist/textAngular.css'>
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
 
 <body>
@@ -54,19 +49,14 @@
             <p class="text-muted">&copy; @DateTime.Now.Year - <a href="https://www.obisoft.com.cn">Obisoft Corporation</a> | 东北大学软件学院&nbsp;&nbsp;辽ICP备15014187号</p>
         </div>
     </footer>
-    <environment names="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/lib/datatables/media/js/jquery.dataTables.min.js"></script>
-        <script src='~/lib/angular/angular.min.js'></script>
-        <script src='~/lib/textAngular/dist/textAngular-rangy.min.js'></script>
-        <script src='~/lib/textAngular/dist/textAngular-sanitize.min.js'></script>
-        <script src='~/lib/textAngular/dist/textAngular.min.js'></script>
-        <script src="~/js/site.js"></script>
-    </environment>
-    <environment names="Staging,Production">
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src='~/lib/angular/angular.min.js'></script>
+    <script src='~/lib/textAngular/dist/textAngular-rangy.min.js'></script>
+    <script src='~/lib/textAngular/dist/textAngular-sanitize.min.js'></script>
+    <script src='~/lib/textAngular/dist/textAngular.min.js'></script>
+    <script src="~/js/site.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 
