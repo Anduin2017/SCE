@@ -40,12 +40,6 @@ namespace SCE.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Seed()
-        {
-            await _context.Seed(_userManager);
-            return Json(new {});
-        }
-
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";
