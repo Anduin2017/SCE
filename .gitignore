@@ -46,7 +46,6 @@ project.lock.json
 artifacts/
 *.min.js
 *.min.css
-lib/
 .vscode/
 
 *_i.c
