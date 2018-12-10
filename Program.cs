@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Aiursoft.Pylon;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using SCE.Data;
 
 namespace SCE
 {
@@ -12,7 +14,9 @@ namespace SCE
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            BuildWebHost(args)
+                .MigrateDbContext<ApplicationDbContext>(async (db, services) => await db.Seed(services))
+                .Run();
         }
 
         public static IWebHost BuildWebHost(string[] args)

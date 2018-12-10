@@ -23,10 +23,9 @@ namespace SCE.Data
             base.OnModelCreating(builder);
         }
 
-        public async Task Seed(UserManager<ApplicationUser> _userManager)
+        public async Task Seed(IServiceProvider services)// UserManager<ApplicationUser> _userManager)
         {
-            //var _userManager = app.ApplicationServices.GetRequiredService<UserManager<ApplicationUser>>();
-
+            var _userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
             var Admin = await this.UserType.SingleOrDefaultAsync(t => t.IsAdmin == true);
             if (Admin == null)
             {

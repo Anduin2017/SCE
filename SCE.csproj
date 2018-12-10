@@ -11,5 +11,6 @@
   <ItemGroup>
     <PackageReference Include="Aiursoft.Pylon" Version="0.9.7" />
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.4" />
   </ItemGroup>
 </Project>
