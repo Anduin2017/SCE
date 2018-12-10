@@ -10,16 +10,12 @@ SCE系统最初为东北大学软件学院开发。在开发结束后，考虑�
 运行代码前需要安装下列组件：  
 
     git
-    bower
-    npm
     dotnet core sdk
-    sql server localDb
 
 下载项目后，在./src/SCE目录依次执行：  
 
-    bower install
     dotnet restore
     dotnet ef database update
     dotnet run
 
-这将会下载前端依赖项、下载后端依赖项、更新数据库、并运行项目。
+这将会下载后端依赖项、更新数据库、并运行项目。
