@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using SCE.Data;
 using SCE.Models;
 using Microsoft.AspNetCore.Identity;
+using Aiursoft.Pylon;
 
 namespace SCE
 {
@@ -59,6 +60,7 @@ namespace SCE
             }
             else
             {
+                app.UseEnforceHttps();
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
