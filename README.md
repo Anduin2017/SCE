@@ -12,11 +12,13 @@ The SCE system was originally developed for the Northeastern University Academy 
 
 The following components need to be installed before running the code:
 
-     .NET Core SDK
+* .NET Core SDK
 
 After downloading the project, execute it in the ./src/SCE directory:
 
-     dotnet restore
-     Dotnet run
+```bash
+$ dotnet restore
+$ dotnet run
+```
 
 This will download the backend dependencies, update the database, and run the project.
