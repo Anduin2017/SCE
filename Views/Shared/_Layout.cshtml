@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+<!DOCTYPE html>
 <html ng-app="SCE">
 
 <head>
@@ -9,6 +10,7 @@
     <link rel='stylesheet' href='~/lib/font-awesome/css/font-awesome.min.css'>
     <link rel='stylesheet' href='~/lib/textAngular/dist/textAngular.css'>
     <link rel="stylesheet" href="~/css/site.css" />
+    @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 
 <body>
