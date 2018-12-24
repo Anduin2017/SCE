@@ -16,17 +16,20 @@ namespace SCE.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger _logger;
         private readonly ApplicationDbContext _context;
+        private readonly IServiceProvider _services;
 
         public HomeController(
         UserManager<ApplicationUser> userManager,
         SignInManager<ApplicationUser> signInManager,
         ILoggerFactory loggerFactory,
-        ApplicationDbContext _context)
+        ApplicationDbContext context,
+        IServiceProvider services)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = loggerFactory.CreateLogger<ManageController>();
-            this._context = _context;
+            _context = context;
+            _services = services;
         }
         public IActionResult Index()
         {
@@ -45,6 +48,12 @@ namespace SCE.Controllers
             ViewData["Message"] = "Your contact page.";
 
             return View();
+        }
+
+        public async Task<IActionResult> Seed()
+        {
+            await _context.Seed(_services);
+            return NoContent();
         }
 
         public IActionResult Error()
