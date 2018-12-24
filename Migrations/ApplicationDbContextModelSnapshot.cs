@@ -353,7 +353,7 @@ namespace SCE.Migrations
                     b.HasOne("SCE.Models.ApplicationUser", "WorkUser")
                         .WithMany()
                         .HasForeignKey("WorkUserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }
