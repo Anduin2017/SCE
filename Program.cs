@@ -15,7 +15,8 @@ namespace SCE
         public static void Main(string[] args)
         {
             BuildWebHost(args)
-                .MigrateDbContext<ApplicationDbContext>()
+                .MigrateDbContext<ApplicationDbContext>(async (db, services) => await db.Seed(services))
+                .Run();
         }
 
         public static IWebHost BuildWebHost(string[] args)
