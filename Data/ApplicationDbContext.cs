@@ -39,14 +39,14 @@ namespace SCE.Data
                 await SaveChangesAsync();
             }
 
-            var Part = await this.Part.SingleOrDefaultAsync(t => t.PartName == "其它");
-            if(Part==null)
+            var part = await this.Part.SingleOrDefaultAsync(t => t.PartName == "其它");
+            if (part==null)
             {
-                Part = new Part
+                part = new Part
                 {
                     PartName = "其它"
                 };
-                this.Part.Add(Part);
+                this.Part.Add(part);
                 await this.SaveChangesAsync();
             }
 
@@ -57,7 +57,7 @@ namespace SCE.Data
                 StaffNo = "08608",
                 Name = "王蓓蕾",
                 UserTypeId = Admin.UserTypeId,
-                PartId = Part.PartId
+                PartId = part.PartId
             };
 
             var currentWang = await this.Users.SingleOrDefaultAsync(t => t.Name == "王蓓蕾");
