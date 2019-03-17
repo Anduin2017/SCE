@@ -1,6 +1,6 @@
 # SCE
 
-[![Build status](https://aiursoft.visualstudio.com/SCE/_apis/build/status/SCE%20CI)](https://aiursoft.visualstudio.com/SCE/_build/latest?definitionId=17)
+[![Build status](https://aiursoft.visualstudio.com/Star/_apis/build/status/SCE%20CI)](https://aiursoft.visualstudio.com/Star/_build/latest?definitionId=7)
 
 SCE system is an online evaluation and voting management system based on ASP.NET Core.
 
