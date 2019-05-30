@@ -6,12 +6,12 @@
     <AssemblyName>SCE</AssemblyName>
     <PackageId>SCE</PackageId>
     <Authors>Anduin</Authors>
-    <ApplicationInsightsResourceId>/subscriptions/6eedf4ae-3d30-41a0-91cf-0d1ff1ed8ccb/resourcegroups/SCE/providers/microsoft.insights/components/SCE</ApplicationInsightsResourceId>
-    <ApplicationInsightsAnnotationResourceId>/subscriptions/6eedf4ae-3d30-41a0-91cf-0d1ff1ed8ccb/resourcegroups/SCE/providers/microsoft.insights/components/SCE</ApplicationInsightsAnnotationResourceId>
+    <AspNetCoreModuleName>AspNetCoreModuleV2</AspNetCoreModuleName>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aiursoft.Pylon" Version="0.12.0" />
+    <PackageReference Include="Aiursoft.Pylon" Version="0.12.4" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 

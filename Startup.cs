@@ -50,9 +50,6 @@ namespace SCE
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -66,7 +63,6 @@ namespace SCE
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseMvcWithDefaultRoute();
-            //await app.ApplicationServices.GetRequiredService<ApplicationDbContext>().Seed(app);
         }
     }
 }
